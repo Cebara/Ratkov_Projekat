@@ -1,17 +1,16 @@
 package automation.enumaration;
 
 /**
- * <b>Enumation : RestAPI</b> RestAPI Names
+ * <b>Enumeration : RestAPI</b> RestAPI Names
  */
 
 public enum RestApiNames {
 
     /**
-     * Using Database Names as Enum list
+     * Using RestAPI Names as Enum list
      */
 
-    PROVSPOTAPI("prov-spot-api"),
-    SVSPOTAPI("sv-spot-api");
+    CAMPAIGN("campaign-api");
 
     public final String option;
 

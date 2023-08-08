@@ -47,7 +47,8 @@ public class ListenersReport implements IReporter {
             ProjectUtils projectUtils = new ProjectUtils();
             ExchangeCredentials credentials = new WebCredentials("TelcoTest@seavus.com", "d24ezVnp$XrJLj!G");
             service.setCredentials(credentials);
-            service.autodiscoverUrl("TelcoTest@seavus.com", service);
+            //service.autodiscoverUrl("TelcoTest@seavus.com", service);
+            service.autodiscoverUrl("ratko.zekic@seavus.com", service);
 
             EmailMessage message = new EmailMessage(service);
             message.setSubject("Mail with report for the test suite: " + suiteName);
@@ -85,8 +86,9 @@ public class ListenersReport implements IReporter {
                 message.getAttachments().addFileAttachment(".\\target\\surefire-reports\\html\\" + fileName);
             }
 
-            message.getToRecipients().add("jelena.poptrpeva@seavus.com");
-            message.getToRecipients().add("TelcoTest@seavus.com");
+            //message.getToRecipients().add("jelena.poptrpeva@seavus.com");
+            //message.getToRecipients().add("TelcoTest@seavus.com");
+            message.getToRecipients().add("ratko.zekic@seavus.com");
 
             message.send();
 

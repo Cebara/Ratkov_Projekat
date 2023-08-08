@@ -6,7 +6,6 @@ package automation.constants;
 
 public class RestApiUrls {
 
-    public static String restUrl = "http://plnutvintapi01:8210/swagger-ui.html#";
-    public static String svSpotRestUrl = "http://plnutvintapi01:8210/swagger-ui.html#";
+    public static String campaignUrl = "http://portfolio01-acc-vsls.int.dg-sys.net:8127/";
 
 }

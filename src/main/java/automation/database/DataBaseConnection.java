@@ -36,9 +36,25 @@ public class DataBaseConnection {
         // define connection value
         setDatabaseHostname(dbName);
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection con;
+            switch (dbName.option.toUpperCase()) {
+                case "MYSQL": {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    con = DriverManager. getConnection("jdbc:mysql://" + getDbHostUrl(), getDbUsername(), getDbPassword());
+                    break;
+                }
+                case "ORACLE": {
+                    Class.forName("oracle.jdbc.driver.OracleDriver");
+                    con = DriverManager.getConnection("jdbc:oracle:thin:@" + getDbHostUrl(), getDbUsername(), getDbPassword());
+                    break;
+                }
+                default:
+                    con = null;
+            }
+            //Class.forName("oracle.jdbc.driver.OracleDriver");
             // create connection to database
-            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@" + getDbHostUrl(), getDbUsername(), getDbPassword());
+            //Connection con = DriverManager.getConnection("jdbc:oracle:thin:@" + getDbHostUrl(), getDbUsername(), getDbPassword());
+            //Connection con = DriverManager.getConnection("jdbc:oracle:thin:@" + getDbHostUrl(), getDbUsername(), getDbPassword());
             // create statement for connection
             Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             // execute query
@@ -73,13 +89,13 @@ public class DataBaseConnection {
         String pass = null;
 
         switch (dbName) {
-            case DB:
-                host = PropertyManager.dbHostname + ":" + PropertyManager.dbPort + ":" + PropertyManager.dbSid;
-                user = PropertyManager.dbUsername;
-                pass = PropertyManager.dbPassword;
+            case PORTFOLIO:
+                host = PropertyManager.dbHostnamePortfolio + ":" + PropertyManager.dbPortPortfolio + "/portfolio";
+                user = PropertyManager.dbUsernamePortfolio;
+                pass = PropertyManager.dbPasswordPortfolio;
                 break;
             default:
-                host = PropertyManager.dbHostname + ":" + PropertyManager.dbPort + ":" + PropertyManager.dbSid;
+                host = PropertyManager.dbHostname + ":" + PropertyManager.dbPort;
                 user = PropertyManager.dbUsername;
                 pass = PropertyManager.dbPassword;
                 break;

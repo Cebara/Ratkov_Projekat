@@ -20,7 +20,7 @@ public class TestCaseNameApi {
 
     @BeforeSuite
     public void setupApiName() {
-        RestApiNames restApi = RestApiNames.PROVSPOTAPI;
+        RestApiNames restApi = RestApiNames.CAMPAIGN;
         CommonTest.setRestApiName(restApi);
     }
 

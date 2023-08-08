@@ -13,9 +13,12 @@ import java.util.Properties;
 public class PropertyManager {
 
     private final static String propertyFilePath = "src/test/resources/properties/Config.properties";
+    public static String dbHostnamePortfolio;
+    public static String dbPortPortfolio;
+    public static String dbUsernamePortfolio;
+    public static String dbPasswordPortfolio;
     public static String dbHostname;
     public static String dbPort;
-    public static String dbSid;
     public static String dbUsername;
     public static String dbPassword;
     private static Properties properties;
@@ -38,11 +41,10 @@ public class PropertyManager {
                 // load config file
                 properties.load(reader);
                 //import DB connection info
-                dbHostname = properties.getProperty("dbHostname");
-                dbPort = properties.getProperty("dbPort");
-                dbSid = properties.getProperty("dbSid");
-                dbUsername = properties.getProperty("dbUsername");
-                dbPassword = properties.getProperty("dbPassword");
+                dbHostnamePortfolio = properties.getProperty("dbHostnamePortfolio");
+                dbPortPortfolio = properties.getProperty("dbPortPortfolio");
+                dbUsernamePortfolio = properties.getProperty("dbUsernamePortfolio");
+                dbPasswordPortfolio = properties.getProperty("dbPasswordPortfolio");
 
                 // close File
                 reader.close();

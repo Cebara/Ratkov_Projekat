@@ -27,6 +27,8 @@ public class ExtentListeners implements ITestListener, ISuiteListener {
     public static ExtentTest test;
     static String fileName = "Extent_Jenkins";
     private static final ExtentReports extent = ExtentManager.createInstance(".\\target\\surefire-reports\\html\\" + fileName);
+    File archiveFolder = new File(".\\target\\surefire-reports\\html\\archive\\");
+    File sourceFolder = new File(".\\target\\surefire-reports\\html\\");
     ProjectUtils archiveReport = new ProjectUtils();
     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
     LocalDateTime currentDateTime = LocalDateTime.now();
@@ -34,8 +36,6 @@ public class ExtentListeners implements ITestListener, ISuiteListener {
     String[] currentDateArray = currentDate.split(" ");
     File archiveSubFolder = new File(archiveFolder + "/" + currentDateArray[0].replace("/", "-"));
     File destinationFolder = new File(archiveFolder + "/" + currentDateArray[0].replace("/", "-") + "/" + currentDateArray[1].replace(":", "-"));
-    File archiveFolder = new File(".\\target\\surefire-reports\\html\\archive\\");
-    File sourceFolder = new File(".\\target\\surefire-reports\\html\\");
 
     /**
      * <b>[Method]</b> - On Test Start<br>
