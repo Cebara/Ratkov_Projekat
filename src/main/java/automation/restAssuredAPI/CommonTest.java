@@ -1,6 +1,8 @@
 package automation.restAssuredAPI;
 
+import automation.restAssuredAPI.constants.RestAPIAuthConstants;
 import automation.constants.RestApiUrls;
+import automation.enumaration.RestApiAuth;
 import automation.enumaration.RestApiNames;
 import automation.utilities.ExtentManager;
 import io.restassured.builder.RequestSpecBuilder;
@@ -30,8 +32,9 @@ public class CommonTest {
     public static RequestSpecification spec;
     public static String url;
     private static RestApiNames restApi;
-    private static Object headerValue;
-    private static String headerParameter;
+    private static RestApiAuth restAuth;
+    private static Object ldapValue;
+    private static String ldapParameter;
 
     /**
      * <b>[Test Method]</b> - Set Up for RestApi if it is used in UI cases<br>
@@ -43,7 +46,7 @@ public class CommonTest {
     public static RequestSpecification getSpec() {
         if (Objects.isNull(spec)) {
             return new RequestSpecBuilder()
-                    .setBaseUri(url)
+                    .setBaseUri(getRestApiUrl())
                     .addFilters(Arrays.asList(new RequestLoggingFilter(), new ResponseLoggingFilter()))
                     .build();
         }
@@ -63,7 +66,19 @@ public class CommonTest {
     public static Map<String, Object> getAuthorizedHeader() {
         Map<String, Object> headerMap = new HashMap<>();
         headerMap.put("Content-Type", "application/json");
-        headerMap.put(headerParameter, headerValue);
+        //headerMap.put(headerParameter, headerValue);
+        switch (getRestApiAuth()) {
+            case BASIC -> {
+                String encodeString = GetApiAuthorization.getBasicAuthenticationHeader(RestAPIAuthConstants.CAMPAIGN_USERNAME, RestAPIAuthConstants.CAMPAIGN_PASSWORD);
+                headerMap.put("Authorization", encodeString);
+                break;
+            }
+            case HEADER -> {
+                headerMap.put(ldapParameter, ldapValue);
+                break;
+            }
+        }
+
         return headerMap;
     }
 
@@ -236,8 +251,34 @@ public class CommonTest {
 
     }
 
+    /**
+     * <b>[Test Method]</b> - Getting Rest API Name<br>
+     * <br><i>Test Method functionality:</i><br>
+     * Getting Rest API Name
+     */
+
     public static RestApiNames getRestApiName() {
         return restApi;
+    }
+
+    /**
+     * <b>[Test Method]</b> - Getting Rest API Authorization<br>
+     * <br><i>Test Method functionality:</i><br>
+     * Getting Rest API Auth
+     */
+
+    public static RestApiAuth getRestApiAuth() {
+        return restAuth;
+    }
+
+    /**
+     * <b>[Test Method]</b> - Getting Rest API URL<br>
+     * <br><i>Test Method functionality:</i><br>
+     * Getting Rest API URL
+     */
+
+    public static String getRestApiUrl() {
+        return url;
     }
 
     /**
@@ -251,6 +292,16 @@ public class CommonTest {
     }
 
     /**
+     * <b>[Test Method]</b> - Setting Rest API Authorization type<br>
+     * <br><i>Test Method functionality:</i><br>
+     * Setting Rest API Authorization type initialized BeforeSuite inside executing testing Class
+     */
+
+    public static void setRestApiAuthType(RestApiAuth rest) {
+        restAuth = rest;
+    }
+
+    /**
      * <b>[Test Method]</b> - Setting Header Value<br>
      * <br><i>Test Method functionality:</i><br>
      * Setting Rest API Header Value
@@ -260,7 +311,7 @@ public class CommonTest {
      */
 
     public static void setHeaderValue(Object ob) {
-        headerValue = ob;
+        ldapValue = ob;
     }
 
     /**
@@ -273,7 +324,7 @@ public class CommonTest {
      */
 
     public static void setHeaderParameter(String par) {
-        headerParameter = par;
+        ldapParameter = par;
     }
 
     /**
@@ -287,21 +338,35 @@ public class CommonTest {
      */
     @BeforeTest
     public void setup() {
+        String apiUrl;
+        // initialize RestAPI URL
         switch (getRestApiName()) {
-            case PROVSPOTAPI -> {
-                url = RestApiUrls.restUrl;
-            }
-            case SVSPOTAPI -> {
-                url = RestApiUrls.svSpotRestUrl;
+            case CAMPAIGN -> {
+                apiUrl = RestApiUrls.campaignUrl;
+                break;
             }
             default -> {
-                url = "";
+                apiUrl = "";
+                break;
             }
         }
         spec = new RequestSpecBuilder()
-                .setBaseUri(url)
+                .setBaseUri(apiUrl)
                 .addFilters(Arrays.asList(new RequestLoggingFilter(), new ResponseLoggingFilter()))
                 .build();
+
+        // set RestAPI URL
+        setRestApiUrl(apiUrl);
+    }
+
+    /**
+     * <b>[Test Method]</b> - Setting Rest API URL<br>
+     * <br><i>Test Method functionality:</i><br>
+     * Setting Rest API Name initialized BeforeSuite inside executing testing Class
+     */
+
+    public static void setRestApiUrl(String apiUrl) {
+        url = apiUrl;
     }
 
 }

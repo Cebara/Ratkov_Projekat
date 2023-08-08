@@ -1,17 +1,18 @@
 package automation.enumaration;
 
 /**
- * <b>Enumation : Database</b> Database Names
+ * <b>Enumeration : Database</b> Database Names
  */
 
 public enum DatabaseNames {
 
     /**
-     * Using Database Names as Enum list
+     * Using Database Names as Enum list<br>
+     * String option represent type of Database
      */
 
-    DB("Database"),
-    SPOT("Spot");
+    PORTFOLIO("MySQL"),
+    SPOT("Oracle");
 
     public final String option;
 
