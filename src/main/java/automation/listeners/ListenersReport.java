@@ -72,7 +72,8 @@ public class ListenersReport implements IReporter {
             FilenameFilter Filefilter = new FilenameFilter() {
                 public boolean accept(File dir, String name) {
                     ExtentListeners listener = new ExtentListeners();
-                    if (name.startsWith(listener.fileName) || name.endsWith(".jpg")) {
+                    // check if name is contains string used for ExtentListener and ExtentApiListener or contains image file
+                    if (name.startsWith(listener.fileName) || name.endsWith(".jpg") || name.startsWith("RestAssured_Extent_Report")) {
                         return true;
                     } else {
                         return false;
@@ -86,6 +87,7 @@ public class ListenersReport implements IReporter {
                 message.getAttachments().addFileAttachment(".\\target\\surefire-reports\\html\\" + fileName);
             }
 
+            // add recipient
             //message.getToRecipients().add("jelena.poptrpeva@seavus.com");
             //message.getToRecipients().add("TelcoTest@seavus.com");
             message.getToRecipients().add("ratko.zekic@seavus.com");
