@@ -4,9 +4,13 @@ import automation.restAssuredAPI.enumaration.RestApiMethodTypes;
 import io.restassured.response.Response;
 import java.io.UnsupportedEncodingException;
 
+/**
+ * <b>RESTASSUREAPI</b> [Rest Assure API]: Return Rest Assure API response
+ */
 public class RestApiPreparationData extends CommonTest {
 
     static String body;
+    static String url;
     static RestApiMethodTypes method;
 
 
@@ -22,7 +26,7 @@ public class RestApiPreparationData extends CommonTest {
      * @return Response response
      */
 
-    public Response returnResponse(RestApiMethodTypes method, String url) {
+    public static Response returnResponse(RestApiMethodTypes method, String url) {
         Response response = null;
         try {
             switch (method) {
@@ -61,7 +65,7 @@ public class RestApiPreparationData extends CommonTest {
      * @param requestBody String
      */
 
-    public void setBody(String requestBody) {
+    public static void setBody(String requestBody) {
         body = requestBody;
     }
 
@@ -71,7 +75,7 @@ public class RestApiPreparationData extends CommonTest {
      * Getting Rest API Request Body
      */
 
-    public String getBody() {
+    public static String getBody() {
         return body;
     }
 
@@ -83,7 +87,7 @@ public class RestApiPreparationData extends CommonTest {
      * @param requestType RestApiMethodTypes
      */
 
-    public void setMethod(RestApiMethodTypes requestType) {
+    public static void setMethod(RestApiMethodTypes requestType) {
         method = requestType;
     }
 
@@ -93,8 +97,30 @@ public class RestApiPreparationData extends CommonTest {
      * Getting Rest API Method type
      */
 
-    public RestApiMethodTypes getMethod() {
+    public static RestApiMethodTypes getMethod() {
         return method;
+    }
+
+    /**
+     * <b>[Test Method]</b> - Setting Request URL<br>
+     * <br><i>Test Method functionality:</i><br>
+     * Setting Rest API Request URL<br>
+     *
+     * @param requestUrl String
+     */
+
+    public static void setUrl(String requestUrl) {
+        url = requestUrl;
+    }
+
+    /**
+     * <b>[Test Method]</b> - Getting API Request URL<br>
+     * <br><i>Test Method functionality:</i><br>
+     * Getting Rest API Request URL
+     */
+
+    public static String getUrl() {
+        return url;
     }
 
 }
