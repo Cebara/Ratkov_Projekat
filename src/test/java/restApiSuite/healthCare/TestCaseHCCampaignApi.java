@@ -15,7 +15,7 @@ import java.io.UnsupportedEncodingException;
  */
 
 @Listeners(automation.listeners.ExtentApiListener.class)
-public class TestCaseHCCampaignApi extends CommonTest {
+public class TestCaseHCCampaignApi {
 
     HealthCheck healthCheck = new HealthCheck();
     CommonTest common = new CommonTest();
@@ -28,7 +28,7 @@ public class TestCaseHCCampaignApi extends CommonTest {
      */
 
     @Test
-    public void testGetCampaignInstance() {
+    public void tcVerifyGetCampaignInstanceUp() {
         try {
             healthCheck.checkGetCampaignInstanceUp();
         } catch (UnsupportedEncodingException e) {
@@ -44,7 +44,7 @@ public class TestCaseHCCampaignApi extends CommonTest {
      */
 
     @Test
-    public void testGetCampaignAll() {
+    public void tcVerifyGetCampaignAllUp() {
         try {
             healthCheck.checkGetCampaignAllUp();
         } catch (UnsupportedEncodingException e) {
@@ -60,7 +60,7 @@ public class TestCaseHCCampaignApi extends CommonTest {
      */
 
     @Test
-    public void testGetValidCampaign() {
+    public void tcVerifyGetValidCampaignUp() {
         try {
             healthCheck.checkGetValidCampaignUp();
         } catch (UnsupportedEncodingException e) {
@@ -76,7 +76,7 @@ public class TestCaseHCCampaignApi extends CommonTest {
      */
 
     @Test
-    public void testPostCampaignInstance() {
+    public void tcVerifyPostCampaignInstanceUp() {
         try {
             healthCheck.checkPostCampaignInstanceUp();
         } catch (UnsupportedEncodingException e) {
@@ -92,7 +92,7 @@ public class TestCaseHCCampaignApi extends CommonTest {
      */
 
     @Test
-    public void testPutCampaignInstance() {
+    public void tcVerifyPutCampaignInstanceUp() {
         try {
             healthCheck.checkPutCampaignInstanceUp();
         } catch (UnsupportedEncodingException e) {
@@ -108,7 +108,7 @@ public class TestCaseHCCampaignApi extends CommonTest {
      */
 
     @Test
-    public void testDeleteCampaignInstance() {
+    public void tcVerifyDeleteCampaignInstanceUp() {
         try {
             healthCheck.checkDeleteCampaignInstanceUp();
         } catch (UnsupportedEncodingException e) {
@@ -124,7 +124,7 @@ public class TestCaseHCCampaignApi extends CommonTest {
      */
 
     @Test
-    public void testDeleteAllCampaigns() {
+    public void tcVerifyDeleteAllCampaignsUp() {
         try {
             healthCheck.checkDeleteAllCampaigns();
         } catch (UnsupportedEncodingException e) {

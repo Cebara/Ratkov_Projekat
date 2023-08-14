@@ -51,10 +51,7 @@ public class DataBaseConnection {
                 default:
                     con = null;
             }
-            //Class.forName("oracle.jdbc.driver.OracleDriver");
-            // create connection to database
-            //Connection con = DriverManager.getConnection("jdbc:oracle:thin:@" + getDbHostUrl(), getDbUsername(), getDbPassword());
-            //Connection con = DriverManager.getConnection("jdbc:oracle:thin:@" + getDbHostUrl(), getDbUsername(), getDbPassword());
+
             // create statement for connection
             Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             // execute query
@@ -89,10 +86,25 @@ public class DataBaseConnection {
         String pass = null;
 
         switch (dbName) {
+            case AC:
+                host = PropertyManager.dbHostnameAc + ":" + PropertyManager.dbPortAc + "/" + PropertyManager.dbNameAc;
+                user = PropertyManager.dbUsernameAc;
+                pass = PropertyManager.dbPasswordAc;
+                break;
+            case PLM:
+                host = PropertyManager.dbHostnamePlm + ":" + PropertyManager.dbPortPlm + "/" + PropertyManager.dbNamePlm;
+                user = PropertyManager.dbUsernamePlm;
+                pass = PropertyManager.dbPasswordPlm;
+                break;
             case PORTFOLIO:
-                host = PropertyManager.dbHostnamePortfolio + ":" + PropertyManager.dbPortPortfolio + "/portfolio";
+                host = PropertyManager.dbHostnamePortfolio + ":" + PropertyManager.dbPortPortfolio + "/" +  PropertyManager.dbNamePortfolio;
                 user = PropertyManager.dbUsernamePortfolio;
                 pass = PropertyManager.dbPasswordPortfolio;
+                break;
+            case PRODUCT:
+                host = PropertyManager.dbHostnameProduct + ":" + PropertyManager.dbPortProduct + "/portfolio";
+                user = PropertyManager.dbUsernameProduct;
+                pass = PropertyManager.dbPasswordProduct;
                 break;
             default:
                 host = PropertyManager.dbHostname + ":" + PropertyManager.dbPort;

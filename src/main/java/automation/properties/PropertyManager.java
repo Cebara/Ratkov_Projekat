@@ -13,10 +13,26 @@ import java.util.Properties;
 public class PropertyManager {
 
     private final static String propertyFilePath = "src/test/resources/properties/Config.properties";
+    public static String dbHostnameAc;
+    public static String dbPortAc;
+    public static String dbNameAc;
+    public static String dbUsernameAc;
+    public static String dbPasswordAc;
+    public static String dbHostnamePlm;
+    public static String dbPortPlm;
+    public static String dbNamePlm;
+    public static String dbUsernamePlm;
+    public static String dbPasswordPlm;
     public static String dbHostnamePortfolio;
     public static String dbPortPortfolio;
+    public static String dbNamePortfolio;
     public static String dbUsernamePortfolio;
     public static String dbPasswordPortfolio;
+    public static String dbHostnameProduct;
+    public static String dbPortProduct;
+    public static String dbNameProduct;
+    public static String dbUsernameProduct;
+    public static String dbPasswordProduct;
     public static String dbHostname;
     public static String dbPort;
     public static String dbUsername;
@@ -41,10 +57,30 @@ public class PropertyManager {
                 // load config file
                 properties.load(reader);
                 //import DB connection info
+                // PLM
+                dbHostnameAc = properties.getProperty("dbHostnameAc");
+                dbPortAc = properties.getProperty("dbPortAc");
+                dbNameAc = properties.getProperty("dbNameAc");
+                dbUsernameAc = properties.getProperty("dbUsernameAc");
+                dbPasswordAc = properties.getProperty("dbPasswordAc");
+                // PLM
+                dbHostnamePlm = properties.getProperty("dbHostnamePlm");
+                dbPortPlm = properties.getProperty("dbPortPlm");
+                dbNamePlm = properties.getProperty("dbNamePlm");
+                dbUsernamePlm = properties.getProperty("dbUsernamePlm");
+                dbPasswordPlm = properties.getProperty("dbPasswordPlm");
+                // Portfolio
                 dbHostnamePortfolio = properties.getProperty("dbHostnamePortfolio");
                 dbPortPortfolio = properties.getProperty("dbPortPortfolio");
+                dbNamePortfolio = properties.getProperty("dbNamePortfolio");
                 dbUsernamePortfolio = properties.getProperty("dbUsernamePortfolio");
                 dbPasswordPortfolio = properties.getProperty("dbPasswordPortfolio");
+                // Product
+                dbHostnameProduct = properties.getProperty("dbHostnameProduct");
+                dbPortProduct = properties.getProperty("dbPortProduct");
+                dbNameProduct = properties.getProperty("Product");
+                dbUsernameProduct = properties.getProperty("dbUsernameProduct");
+                dbPasswordProduct = properties.getProperty("dbPasswordProduct");
 
                 // close File
                 reader.close();

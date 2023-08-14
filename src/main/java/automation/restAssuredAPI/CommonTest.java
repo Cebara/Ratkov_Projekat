@@ -13,6 +13,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.QueryableRequestSpecification;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.SpecificationQuerier;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 
 import java.io.UnsupportedEncodingException;
@@ -367,6 +368,21 @@ public class CommonTest {
 
     public static void setRestApiUrl(String apiUrl) {
         url = apiUrl;
+    }
+
+    /**
+     * <b>[Method]</b> - Check Status Code<br>
+     * <br>
+     * <i>Method functionality:</i><br>
+     * This functionality checks API status code<br>
+     * compare expected HTTP status code with actual response's status code
+     *
+     * @param expected Expected HTTP status code
+     * @param actual HTTP status code in response
+     */
+
+    protected void checkStatusCode(int expected, int actual) {
+        Assert.assertEquals(expected, actual, "Response HTTP status code is not in expected status");
     }
 
 }
