@@ -11,8 +11,10 @@ public enum DatabaseNames {
      * String option represent type of Database
      */
 
+    AC("MySQL"),
+    PLM("MySQL"),
     PORTFOLIO("MySQL"),
-    SPOT("Oracle");
+    PRODUCT("MySQL");
 
     public final String option;
 

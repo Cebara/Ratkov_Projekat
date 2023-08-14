@@ -11,6 +11,8 @@ import java.io.UnsupportedEncodingException;
 
 /**
  * <b>RestAPI : Campaign Suite</b> Health Check suite test case
+ *  <i>Class functionality:</i><br>
+ *  Class is used to check Campaign API's endpoint status<br>
  */
 
 public class HealthCheck extends CommonTest {
@@ -172,21 +174,6 @@ public class HealthCheck extends CommonTest {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    /**
-     * <b>[Method]</b> - Check Status Code<br>
-     * <br>
-     * <i>Method functionality:</i><br>
-     * This functionality checks API status code<br>
-     * compare expected HTTP status code with actual response's status code
-     *
-     * @param expected Expected HTTP status code
-     * @param actual HTTP status code in response
-     */
-
-    private void checkStatusCode(int expected, int actual) {
-        Assert.assertEquals(expected, actual, "Response HTTP status code is not in expected status");
     }
 
 }
