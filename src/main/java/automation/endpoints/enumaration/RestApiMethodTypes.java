@@ -1,4 +1,4 @@
-package automation.restAssuredAPI.enumaration;
+package automation.endpoints.enumaration;
 
 /**
  * <b>RestAPI/Enumeration : RestAPI Method types</b> RestAPI Method types Enumeration

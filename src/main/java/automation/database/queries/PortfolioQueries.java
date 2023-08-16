@@ -16,5 +16,22 @@ public class PortfolioQueries {
         return query;
     }
 
+    // Query to get campaign instance
+    public static String getCampaingInstance(String table, String id) {
+        String addText;
+        if ( id.isEmpty() || id.isBlank()) {
+            addText = "";
+        } else {
+            addText = " where " + table + " = '" + id + "'";
+        }
+        String campaingInstance = "select * from campaign_instance" + addText;
+        return campaingInstance;
+    }
+
+    // Query to get only One Campaign per House
+    public static String getOneCampaingInstance = "select ci.fk_address_id, count(ci.fk_address_id)  \n" +
+            "from campaign_instance ci \n" +
+            "group by ci.fk_address_id \n" +
+            "having count(ci.fk_address_id) < 2";
 
 }

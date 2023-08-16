@@ -1,4 +1,4 @@
-package automation.restAssuredAPI.constants;
+package automation.endpoints.constants;
 
 /**
  * <b>CONSTANTS</b> [Constants]: RestAPI Authorization Constants

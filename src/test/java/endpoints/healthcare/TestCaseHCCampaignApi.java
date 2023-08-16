@@ -1,9 +1,9 @@
-package restApiSuite.healthCare;
+package endpoints.healthcare;
 
+import automation.endpoints.campaign.testsuite.HealthCheckSuite;
 import automation.enumaration.RestApiAuth;
 import automation.enumaration.RestApiNames;
-import automation.restAssuredAPI.CommonTest;
-import automation.restAssuredAPI.campaign.HealthCheck;
+import automation.endpoints.CommonTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -17,7 +17,7 @@ import java.io.UnsupportedEncodingException;
 @Listeners(automation.listeners.ExtentApiListener.class)
 public class TestCaseHCCampaignApi {
 
-    HealthCheck healthCheck = new HealthCheck();
+    HealthCheckSuite healthCheck = new HealthCheckSuite();
     CommonTest common = new CommonTest();
 
     /**

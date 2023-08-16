@@ -6,6 +6,6 @@ package automation.constants;
 
 public class RestApiUrls {
 
-    public static String campaignUrl = "http://portfolio01-acc-vsls.int.dg-sys.net:8127/";
+    public static String CAMPAIGN_URL = "http://portfolio01-acc-vsls.int.dg-sys.net:8127/";
 
 }

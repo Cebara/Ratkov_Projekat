@@ -1,7 +1,7 @@
-package automation.enumaration.dgfEnums;
+package automation.domain.enums;
 
 /**
- * <b>Enumeration : [DGF Enums]</b> DGF Marketing Segment
+ * <b>Domain : [Enums]</b> DGF Channels
  */
 
 public enum DgfMarketingSegment {
@@ -12,7 +12,7 @@ public enum DgfMarketingSegment {
 
     DGB("DGB"),
     DGH("DGH"),
-    DG_PROFESSIONAL("DG_Professional");
+    DG_PROFESSIONAL("DG_PROFESSIONAL");
 
     public final String option;
 

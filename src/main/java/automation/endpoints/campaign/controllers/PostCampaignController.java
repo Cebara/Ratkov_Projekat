@@ -1,14 +1,12 @@
-package automation.restAssuredAPI.campaign;
+package automation.endpoints.campaign.controllers;
 
 import automation.enumaration.RestApiHttpStatusCodes;
-import automation.restAssuredAPI.CommonTest;
-import automation.restAssuredAPI.RestApiPreparationData;
-import automation.restAssuredAPI.constants.CampaignUriPath;
-import automation.restAssuredAPI.enumaration.RestApiMethodTypes;
+import automation.endpoints.CommonTest;
+import automation.endpoints.RestApiPreparationData;
+import automation.endpoints.constants.CampaignUriPath;
+import automation.endpoints.enumaration.RestApiMethodTypes;
 import io.restassured.response.Response;
 import org.json.JSONObject;
-
-import java.io.UnsupportedEncodingException;
 
 /**
  * <b>RestAPI : Campaign Suite</b> Post Method Test Suite
@@ -16,7 +14,7 @@ import java.io.UnsupportedEncodingException;
  *  Class is used to execute endpoint with Post method type<br>
  */
 
-public class PostCampaignTestGroup extends CommonTest {
+public class PostCampaignController extends CommonTest {
 
     /**
      * <b>[Method]</b> - Assign Campaign to House ID<br>
@@ -31,7 +29,7 @@ public class PostCampaignTestGroup extends CommonTest {
             // initialize request's body
             RestApiPreparationData.setBody(body);
             // get response value
-            Response response = RestApiPreparationData.returnResponse(RestApiMethodTypes.POST, CommonTest.getRestApiUrl() + CampaignUriPath.CAMPAIGN_INSTANCES);
+            Response response = RestApiPreparationData.returnResponse(RestApiMethodTypes.POST, CommonTest.getRestApiUrl() + CampaignUriPath.REST_URL + CampaignUriPath.CAMPAIGN_INSTANCES);
             // check proper HTTP response code is in return
             checkStatusCode(response.getStatusCode(), RestApiHttpStatusCodes.CREATED.option);
         } catch (Exception e) {

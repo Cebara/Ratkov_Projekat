@@ -1,6 +1,6 @@
-package automation.restAssuredAPI;
+package automation.endpoints;
 
-import automation.restAssuredAPI.enumaration.RestApiMethodTypes;
+import automation.endpoints.enumaration.RestApiMethodTypes;
 import io.restassured.response.Response;
 import java.io.UnsupportedEncodingException;
 
