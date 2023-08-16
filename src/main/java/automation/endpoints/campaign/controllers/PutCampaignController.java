@@ -1,6 +1,6 @@
-package automation.restAssuredAPI.campaign;
+package automation.endpoints.campaign.controllers;
 
-import automation.restAssuredAPI.CommonTest;
+import automation.endpoints.CommonTest;
 
 /**
  * <b>RestAPI : Campaign Suite</b> Put Method Test Suite
@@ -8,5 +8,5 @@ import automation.restAssuredAPI.CommonTest;
  *  Class is used to execute endpoint with Put method type<br>
  */
 
-public class PutCampaignTestGroup extends CommonTest  {
+public class PutCampaignController extends CommonTest  {
 }

@@ -1,6 +1,6 @@
-package automation.restAssuredAPI;
+package automation.endpoints;
 
-import automation.restAssuredAPI.constants.RestAPIAuthConstants;
+import automation.endpoints.constants.RestAPIAuthConstants;
 import automation.constants.RestApiUrls;
 import automation.enumaration.RestApiAuth;
 import automation.enumaration.RestApiNames;
@@ -343,7 +343,7 @@ public class CommonTest {
         // initialize RestAPI URL
         switch (getRestApiName()) {
             case CAMPAIGN -> {
-                apiUrl = RestApiUrls.campaignUrl;
+                apiUrl = RestApiUrls.CAMPAIGN_URL;
                 break;
             }
             default -> {

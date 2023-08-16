@@ -1,4 +1,4 @@
-package automation.restAssuredAPI;
+package automation.endpoints;
 
 import java.util.Base64;
 

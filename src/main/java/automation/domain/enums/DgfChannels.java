@@ -1,7 +1,7 @@
-package automation.enumaration.dgfEnums;
+package automation.domain.enums;
 
 /**
- * <b>Enumeration : [DGF Enums]</b> DGF Channels
+ * <b>Domain : [Enums]</b> DGF Channels
  */
 
 public enum DgfChannels {

@@ -1,12 +1,12 @@
-package automation.restAssuredAPI.campaign;
+package automation.endpoints.campaign.testsuite;
 
 import automation.enumaration.RestApiHttpStatusCodes;
-import automation.restAssuredAPI.CommonTest;
-import automation.restAssuredAPI.RestApiPreparationData;
-import automation.restAssuredAPI.constants.CampaignUriPath;
-import automation.restAssuredAPI.enumaration.RestApiMethodTypes;
+import automation.endpoints.CommonTest;
+import automation.endpoints.RestApiPreparationData;
+import automation.endpoints.constants.CampaignUriPath;
+import automation.endpoints.enumaration.RestApiMethodTypes;
 import io.restassured.response.Response;
-import org.testng.Assert;
+
 import java.io.UnsupportedEncodingException;
 
 /**
@@ -15,7 +15,7 @@ import java.io.UnsupportedEncodingException;
  *  Class is used to check Campaign API's endpoint status<br>
  */
 
-public class HealthCheck extends CommonTest {
+public class HealthCheckSuite extends CommonTest {
 
     /**
      * <b>[Method]</b> - Health Check Get Campaign Instance Endpoint<br>
@@ -32,7 +32,7 @@ public class HealthCheck extends CommonTest {
         try {
 
             // get response value
-            Response response = RestApiPreparationData.returnResponse(RestApiMethodTypes.GET, CommonTest.getRestApiUrl() + CampaignUriPath.CAMPAIGN_INSTANCES + "/1");
+            Response response = RestApiPreparationData.returnResponse(RestApiMethodTypes.GET, CommonTest.getRestApiUrl() + CampaignUriPath.REST_URL + CampaignUriPath.CAMPAIGN_INSTANCES + "/1");
             // check proper HTTP response code is in return
             checkStatusCode(response.getStatusCode(), RestApiHttpStatusCodes.BAD_REQUEST.option);
         } catch (Exception e) {
@@ -76,7 +76,7 @@ public class HealthCheck extends CommonTest {
     public void checkGetValidCampaignUp() throws UnsupportedEncodingException {
         try {
             // get response value
-            Response response = RestApiPreparationData.returnResponse(RestApiMethodTypes.GET, CommonTest.getRestApiUrl() + CampaignUriPath.HOUSE_INSTANCE + "/14211TSC-5-1111111");
+            Response response = RestApiPreparationData.returnResponse(RestApiMethodTypes.GET, CommonTest.getRestApiUrl() + CampaignUriPath.REST_URL + CampaignUriPath.HOUSE_INSTANCE + "/14211TSC-5-1111111");
             // check proper HTTP response code is in return
             checkStatusCode(response.getStatusCode(), RestApiHttpStatusCodes.NOT_FOUND.option);
         } catch (Exception e) {
@@ -100,7 +100,7 @@ public class HealthCheck extends CommonTest {
             // initialize request's body
             RestApiPreparationData.setBody("{}");
             // get response value
-            Response response = RestApiPreparationData.returnResponse(RestApiMethodTypes.POST, CommonTest.getRestApiUrl() + CampaignUriPath.CAMPAIGN_INSTANCES);
+            Response response = RestApiPreparationData.returnResponse(RestApiMethodTypes.POST, CommonTest.getRestApiUrl() + CampaignUriPath.REST_URL + CampaignUriPath.CAMPAIGN_INSTANCES);
             // check proper HTTP response code is in return
             checkStatusCode(response.getStatusCode(), RestApiHttpStatusCodes.BAD_REQUEST.option);
         } catch (Exception e) {
@@ -124,7 +124,7 @@ public class HealthCheck extends CommonTest {
             // initialize request's body
             RestApiPreparationData.setBody("{}");
             // get response value
-            Response response = RestApiPreparationData.returnResponse(RestApiMethodTypes.PUT, CommonTest.getRestApiUrl() + CampaignUriPath.CAMPAIGN_INSTANCES + "/1");
+            Response response = RestApiPreparationData.returnResponse(RestApiMethodTypes.PUT, CommonTest.getRestApiUrl() + CampaignUriPath.REST_URL + CampaignUriPath.CAMPAIGN_INSTANCES + "/1");
             // check proper HTTP response code is in return
             checkStatusCode(response.getStatusCode(), RestApiHttpStatusCodes.BAD_REQUEST.option);
         } catch (Exception e) {
@@ -146,7 +146,7 @@ public class HealthCheck extends CommonTest {
     public void checkDeleteCampaignInstanceUp() throws UnsupportedEncodingException {
         try {
             // get response value
-            Response response = RestApiPreparationData.returnResponse(RestApiMethodTypes.DELETE, CommonTest.getRestApiUrl() + CampaignUriPath.CAMPAIGN_INSTANCES + "/1");
+            Response response = RestApiPreparationData.returnResponse(RestApiMethodTypes.DELETE, CommonTest.getRestApiUrl() + CampaignUriPath.REST_URL + CampaignUriPath.CAMPAIGN_INSTANCES + "/1");
             // check proper HTTP response code is in return
             checkStatusCode(response.getStatusCode(), RestApiHttpStatusCodes.BAD_REQUEST.option);
         } catch (Exception e) {

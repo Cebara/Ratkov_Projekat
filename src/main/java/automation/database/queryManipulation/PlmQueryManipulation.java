@@ -3,7 +3,7 @@ package automation.database.queryManipulation;
 import automation.database.DataBaseConnection;
 import automation.database.queries.PlmQueries;
 import automation.enumaration.DatabaseNames;
-import automation.enumaration.dgfEnums.DgfMarketingSegment;
+import automation.domain.enums.DgfMarketingSegment;
 import automation.utilities.TestDataGenerator;
 
 import java.io.UnsupportedEncodingException;

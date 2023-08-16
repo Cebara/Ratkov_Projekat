@@ -1,34 +1,36 @@
-package restApiSuite.apiSuite.campaign;
+package endpoints.apiSuite.campaign;
 
+import automation.endpoints.CommonTest;
+import automation.endpoints.campaign.testsuite.SuiteGettingCampaignDetail;
 import automation.enumaration.RestApiAuth;
 import automation.enumaration.RestApiNames;
-import automation.restAssuredAPI.CommonTest;
-import automation.restAssuredAPI.campaign.SuiteHouseInstance;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 /**
- * <b>RestAPI Feature : API Suite</b> Assign Campaign
+ * <b>RestAPI Feature : API Suite</b> Get Campaign
  */
 
 @Listeners(automation.listeners.ExtentApiListener.class)
-public class TestCaseApiCampaignAssign {
+public class TestSuiteApiCampaignGet {
 
     CommonTest common = new CommonTest();
-    SuiteHouseInstance houseInstance = new SuiteHouseInstance();
+    SuiteGettingCampaignDetail getCampaign = new SuiteGettingCampaignDetail();
 
     /**
-     * <b>[Test Method]</b> - Test Case assigning Campaign to House<br>
+     * <b>[Test Method]</b> - Test Case getting Campaign Detail<br>
      * <br>
      * <i>Test Method functionality:</i><br>
-     * This functionality performs assignment Campaign to House<br>
+     * This functionality performs getting Campaign details<br>
      */
 
     @Test
-    public void tcAssignCampaign() {
-        houseInstance.flowAssignCampaignInstance();
+    public void tcGetCampaignInstance() {
+        getCampaign.flowGetCampaingInstanceInfo();
     }
+
+
 
     /**
      * <b>[Test Method]</b> - Set Up for RestApi<br>
