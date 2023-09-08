@@ -1,7 +1,7 @@
 package automation.endpoints;
 
-import automation.endpoints.constants.RestAPIAuthConstants;
-import automation.constants.RestApiUrls;
+import automation.de.dg.endpoints.constants.RestAPIAuthConstants;
+import automation.de.dg.contstants.RestApiUrls;
 import automation.enumaration.RestApiAuth;
 import automation.enumaration.RestApiNames;
 import automation.utilities.ExtentManager;
@@ -70,7 +70,7 @@ public class CommonTest {
         //headerMap.put(headerParameter, headerValue);
         switch (getRestApiAuth()) {
             case BASIC -> {
-                String encodeString = GetApiAuthorization.getBasicAuthenticationHeader(RestAPIAuthConstants.CAMPAIGN_USERNAME, RestAPIAuthConstants.CAMPAIGN_PASSWORD);
+                String encodeString = GetApiAuthorization.getBasicAuthenticationHeader(getApiUsername(), getApiPassword());
                 headerMap.put("Authorization", encodeString);
                 break;
             }
@@ -346,6 +346,10 @@ public class CommonTest {
                 apiUrl = RestApiUrls.CAMPAIGN_URL;
                 break;
             }
+            case CIMREST -> {
+                apiUrl = RestApiUrls.CIMREST_URL;
+                break;
+            }
             default -> {
                 apiUrl = "";
                 break;
@@ -368,6 +372,50 @@ public class CommonTest {
 
     public static void setRestApiUrl(String apiUrl) {
         url = apiUrl;
+    }
+
+    /**
+     * <b>[Test Method]</b> - Getting Rest API Username<br>
+     * <br><i>Test Method functionality:</i><br>
+     * Getting Rest API Username used for Basic auth<br>
+     * Username is taken from Rest API Constant class
+     * @return username API username
+     */
+    private static String getApiUsername() {
+        String username = null;
+        switch (getRestApiName()) {
+            case CAMPAIGN -> {
+                username = RestAPIAuthConstants.CAMPAIGN_USERNAME;
+                break;
+            }
+            case CIMREST -> {
+                username = RestAPIAuthConstants.CIM_USERNAME;
+                break;
+            }
+        }
+        return username;
+    }
+
+    /**
+     * <b>[Test Method]</b> - Getting Rest API Password<br>
+     * <br><i>Test Method functionality:</i><br>
+     * Getting Rest API Password used for Basic auth<br>
+     * Username is taken from Rest API Constant class
+     * @return username API password
+     */
+    private static String getApiPassword() {
+        String password = null;
+        switch (getRestApiName()) {
+            case CAMPAIGN -> {
+                password = RestAPIAuthConstants.CAMPAIGN_PASSWORD;
+                break;
+            }
+            case CIMREST -> {
+                password = RestAPIAuthConstants.CIM_PASSWORD;
+                break;
+            }
+        }
+        return password;
     }
 
     /**

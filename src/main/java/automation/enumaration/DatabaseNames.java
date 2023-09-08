@@ -12,6 +12,7 @@ public enum DatabaseNames {
      */
 
     AC("MySQL"),
+    DGH("Firebird"),
     PLM("MySQL"),
     PORTFOLIO("MySQL"),
     PRODUCT("MySQL");

@@ -18,6 +18,11 @@ public class PropertyManager {
     public static String dbNameAc;
     public static String dbUsernameAc;
     public static String dbPasswordAc;
+    public static String dbHostnameDgh;
+    public static String dbPortDgh;
+    public static String dbNameDgh;
+    public static String dbUsernameDgh;
+    public static String dbPasswordDgh;
     public static String dbHostnamePlm;
     public static String dbPortPlm;
     public static String dbNamePlm;
@@ -57,12 +62,18 @@ public class PropertyManager {
                 // load config file
                 properties.load(reader);
                 //import DB connection info
-                // PLM
+                // AC
                 dbHostnameAc = properties.getProperty("dbHostnameAc");
                 dbPortAc = properties.getProperty("dbPortAc");
                 dbNameAc = properties.getProperty("dbNameAc");
                 dbUsernameAc = properties.getProperty("dbUsernameAc");
                 dbPasswordAc = properties.getProperty("dbPasswordAc");
+                // DGH
+                dbHostnameDgh = properties.getProperty("dbHostnameDgh");
+                dbPortDgh = properties.getProperty("dbPortDgh");
+                dbNameDgh = properties.getProperty("dbNameDgh");
+                dbUsernameDgh = properties.getProperty("dbUsernameDgh");
+                dbPasswordDgh = properties.getProperty("dbPasswordDgh");
                 // PLM
                 dbHostnamePlm = properties.getProperty("dbHostnamePlm");
                 dbPortPlm = properties.getProperty("dbPortPlm");

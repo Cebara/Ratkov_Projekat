@@ -31,6 +31,7 @@
         <json.version>20230618</json.version>
         <jackson-databind.version>2.15.2</jackson-databind.version>
         <mysql.version>8.0.33</mysql.version>
+        <firebird.version>2.1.6</firebird.version>
         <slf4j.version>2.0.7</slf4j.version>
     </properties>
 
@@ -171,6 +172,12 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
+        </dependency>
+        <!--  Next dependency is for Firebird database JDBC driver  -->
+        <dependency>
+            <groupId>org.firebirdsql.jdbc</groupId>
+            <artifactId>jaybird</artifactId>
+            <version>${firebird.version}</version>
         </dependency>
         <!--  Next dependency is for SLF4J (The Simple Logging Facade for Java)  -->
         <dependency>

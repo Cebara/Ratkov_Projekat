@@ -1,6 +1,7 @@
 package automation.database.queryManipulation;
 
-import java.io.UnsupportedEncodingException;
+import org.firebirdsql.jdbc.FBSQLException;
+
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -57,10 +58,20 @@ public class QueryManipulation {
      * @throws SQLException exception
      */
 
-    public static String returnString(ResultSet rs, String column, int row) throws SQLException {
+    public static String returnString(ResultSet rs, String column, int row) throws FBSQLException, SQLException, NullPointerException {
         ResultSet rsHelp = rs;
-        rsHelp.beforeFirst();
+        /*if (!rsHelp.next()) {
+            rsHelp.beforeFirst();
+            if (row == 0 || row == 1) {
+                rsHelp.next();
+            } else {
+                rsHelp.absolute(row + 1);
+            }
+        } else {
+            rsHelp.beforeFirst();
+        }*/
         // navigate to desired row
+        rsHelp.beforeFirst();
         if (row == 0 || row == 1) {
             rsHelp.next();
         } else {
@@ -69,12 +80,64 @@ public class QueryManipulation {
         // take value from column
         String columnValue = null;
 
-        checkColumnType(rs);
+        //checkColumnType(rs);
         try {
-            columnValue = rsHelp.getString(column).trim();
+            columnValue = rsHelp.getString(column);
+            if (columnValue != null) {
+                columnValue = columnValue.trim();
+            }
+        } catch (FBSQLException fe) {
+            fe.printStackTrace();
+            fail(fe.getLocalizedMessage());
         } catch (SQLException e) {
             e.printStackTrace();
             fail("Empty SQL response");
+        } catch (NullPointerException ne) {
+            ne.printStackTrace();
+            fail("Invalid request string");
+        }
+        return columnValue;
+    }
+
+    /**
+     * <b>[Method]</b> - Return Value<br>
+     * <br>
+     * <i>Method functionality:</i><br>
+     * This functionality returns String value<br>
+     * from desired column and row<br>
+     *
+     * @param rs ResultSet
+     * @param column String
+     * @param row int
+     * @throws SQLException exception
+     */
+
+    public static String returnStringForUpdate(ResultSet rs, String column, int row) throws FBSQLException, SQLException, NullPointerException {
+        ResultSet rsHelp = rs;
+        rsHelp.beforeFirst();
+        if (row == 0) {
+            rsHelp.next();
+        } else {
+            rsHelp.absolute(row + 1);
+        }
+        // take value from column
+        String columnValue = null;
+
+        //checkColumnType(rs);
+        try {
+            columnValue = rsHelp.getString(column);
+            if (columnValue != null) {
+                columnValue = columnValue.trim();
+            }
+        } catch (FBSQLException fe) {
+            fe.printStackTrace();
+            fail(fe.getLocalizedMessage());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            fail("Empty SQL response");
+        } catch (NullPointerException ne) {
+            ne.printStackTrace();
+            fail("Invalid request string");
         }
         return columnValue;
     }
