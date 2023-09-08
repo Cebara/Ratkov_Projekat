@@ -36,8 +36,14 @@ public class DataBaseConnection {
         // define connection value
         setDatabaseHostname(dbName);
         try {
-            Connection con;
-            switch (dbName.option.toUpperCase()) {
+            // establish connection
+            Connection con = setConnection(dbName);
+            /*switch (dbName.option.toUpperCase()) {
+                case "FIREBIRD": {
+                    Class.forName("org.firebirdsql.jdbc.FBDriver");
+                    con = DriverManager. getConnection("jdbc:firebirdsql://" + getDbHostUrl(), getDbUsername(), getDbPassword());
+                    break;
+                }
                 case "MYSQL": {
                     Class.forName("com.mysql.jdbc.Driver");
                     con = DriverManager. getConnection("jdbc:mysql://" + getDbHostUrl(), getDbUsername(), getDbPassword());
@@ -50,7 +56,7 @@ public class DataBaseConnection {
                 }
                 default:
                     con = null;
-            }
+            }*/
 
             // create statement for connection
             Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -72,6 +78,50 @@ public class DataBaseConnection {
     }
 
     /**
+     * <b>[Method]</b> - Get DB Query Response<br>
+     * <br>
+     * <i>Method functionality:</i><br>
+     * Establishing DB connection, execute query and returns response<br>
+     *
+     * @param dbName Database Name
+     * @param query  Database Query
+     * @return returning query response
+     * @throws ClassNotFoundException exception
+     * @throws SQLException           exception
+     */
+
+    public static int updateQuery(DatabaseNames dbName, String query) throws ClassNotFoundException, SQLException {
+        int updateCount = 0;
+        // define connection value
+        setDatabaseHostname(dbName);
+        try {
+            // establish connection
+            Connection con = setConnection(dbName);
+            //con.setAutoCommit(false);
+            // create statement for connection
+            Statement statement = con.createStatement();
+
+            // update database
+            updateCount = statement.executeUpdate(query);
+            System.out.println("Updated test_value successfully : " + updateCount );
+            //con.commit();
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            fail("Database driver is not found");
+            ExtentListeners.test.log(Status.FAIL, "Database driver is not found");
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            fail("Could not establish connection to the database " + dbName);
+            ExtentListeners.test.log(Status.FAIL, "Connection to the database " + dbName + " cannot be established");
+        }
+
+        return updateCount;
+    }
+
+
+    /**
      * <b>[Method]</b> - Setting Database Data<br>
      * <br>
      * <i>Method functionality:</i><br>
@@ -90,6 +140,11 @@ public class DataBaseConnection {
                 host = PropertyManager.dbHostnameAc + ":" + PropertyManager.dbPortAc + "/" + PropertyManager.dbNameAc;
                 user = PropertyManager.dbUsernameAc;
                 pass = PropertyManager.dbPasswordAc;
+                break;
+            case DGH:
+                host = PropertyManager.dbHostnameDgh + ":" + PropertyManager.dbPortDgh + "/" + PropertyManager.dbNameDgh;
+                user = PropertyManager.dbUsernameDgh;
+                pass = PropertyManager.dbPasswordDgh;
                 break;
             case PLM:
                 host = PropertyManager.dbHostnamePlm + ":" + PropertyManager.dbPortPlm + "/" + PropertyManager.dbNamePlm;
@@ -116,6 +171,55 @@ public class DataBaseConnection {
         setDbHostUrl(host);
         setDbUsername(user);
         setDbPassword(pass);
+    }
+
+    /**
+     * <b>[Method]</b> - Setting Connection<br>
+     * <br>
+     * <i>Method functionality:</i><br>
+     * Creating Connection<br>
+     * based on database type, initialize class and create connection<br>
+     *
+     * @param dbName Database Name
+     * @return con Connection
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
+
+    public static Connection setConnection(DatabaseNames dbName) throws ClassNotFoundException, SQLException {
+        Connection con = null;
+        try {
+            switch (dbName.option.toUpperCase()) {
+                case "FIREBIRD": {
+                    Class.forName("org.firebirdsql.jdbc.FBDriver");
+                    con = DriverManager. getConnection("jdbc:firebirdsql://" + getDbHostUrl(), getDbUsername(), getDbPassword());
+                    break;
+                }
+                case "MYSQL": {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    con = DriverManager. getConnection("jdbc:mysql://" + getDbHostUrl(), getDbUsername(), getDbPassword());
+                    break;
+                }
+                case "ORACLE": {
+                    Class.forName("oracle.jdbc.driver.OracleDriver");
+                    con = DriverManager.getConnection("jdbc:oracle:thin:@" + getDbHostUrl(), getDbUsername(), getDbPassword());
+                    break;
+                }
+                default:
+                    con = null;
+            }
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            fail("Database driver is not found");
+            ExtentListeners.test.log(Status.FAIL, "Database driver is not found");
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            fail("Could not establish connection to the database " + dbName);
+            ExtentListeners.test.log(Status.FAIL, "Connection to the database " + dbName + " cannot be established");
+        }
+        return con;
     }
 
     /**

@@ -9,9 +9,9 @@
 
     <test name="Health Check API Collection">
         <classes>
-            <class name="endpoints.apiSuite.campaign.TestSuiteApiCampaignAssign"/>
-            <class name="endpoints.apiSuite.campaign.TestSuiteApiCampaignDelete"/>
-            <class name="endpoints.apiSuite.campaign.TestSuiteApiCampaignGet"/>
+            <class name="de.dg.endpoints.apiSuite.campaign.TestSuiteApiCampaignAssign"/>
+            <class name="de.dg.endpoints.apiSuite.campaign.TestSuiteApiCampaignDelete"/>
+            <class name="de.dg.endpoints.apiSuite.campaign.TestSuiteApiCampaignGet"/>
         </classes>
     </test>
 

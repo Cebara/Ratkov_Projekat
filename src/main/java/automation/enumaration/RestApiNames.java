@@ -10,7 +10,8 @@ public enum RestApiNames {
      * Using RestAPI Names as Enum list
      */
 
-    CAMPAIGN("campaign-api");
+    CAMPAIGN("campaign-api"),
+    CIMREST("cim-rest-api");
 
     public final String option;
 

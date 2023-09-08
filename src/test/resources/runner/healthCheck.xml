@@ -9,7 +9,7 @@
 
     <test name="Health Check API Collection">
         <classes>
-            <class name="endpoints.healthcare.TestCaseHCCampaignApi"/>
+            <class name="de.dg.endpoints.healthcare.TestCaseHCCampaignApi"/>
         </classes>
     </test>
 
